@@ -4,11 +4,13 @@
 后端自己写（代码量很小），测试用 pytest + requests。
 
 > 目标：两周内做出一个「能跑、能测、能给别人看」的项目，写进简历。
+>
+> **每天具体做什么 → [docs/7天手册.md](docs/7天手册.md)**（含代码框架、验收标准、卡住了怎么办）
 
 ## 技术栈
 
 - Python 3.12 + FastAPI + SQLite
-- pytest + requests + Allure
+- pytest + requests + pytest-html（本机没有 Java，Allure 用不了）
 - GitHub Actions（提交自动跑测试）
 
 ## 怎么跑起来
@@ -80,18 +82,19 @@ uvicorn app.main:app --reload
 
 ```bash
 pytest -v
-pytest --alluredir=./reports/allure_raw
-allure serve ./reports/allure_raw
+pytest -v --html=reports/report.html --self-contained-html
 ```
+
+> 跑测试前，uvicorn 要先开着。
 
 ## 进度（做完一项就打勾，commit 一次）
 
-- [ ] Day 1：`/health` + 学生新增 / 列表 / 详情（3 个接口）
+- [*] Day 1：`/health` + 学生新增 / 列表 / 详情（3 个接口）
 - [ ] Day 2：补齐学生改删 + 课程 + 成绩（9 个接口）
 - [ ] Day 3：pytest 跑通 5 条用例
 - [ ] Day 4：扩到 20 条（缺参 / 类型错 / 不存在 / 重复）
 - [ ] Day 5：YAML 数据驱动 + 三层断言
-- [ ] Day 6：Allure 报告 + GitHub Actions
+- [ ] Day 6：pytest-html 报告 + GitHub Actions
 - [ ] Day 7：补到 35 条以上 + README 截图 + 1 分钟演示
 
 ## 备注

@@ -13,6 +13,7 @@ allure-results/
 allure-report/
 .coverage
 htmlcov/
+.txt
 
 # 数据库
 *.db
